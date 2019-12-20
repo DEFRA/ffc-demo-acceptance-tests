@@ -1,0 +1,7 @@
+Feature: FFC Demo App - claims
+
+Scenario: Starting a new claim
+
+Given I start a new claim at the url "https://ffc-demo-web.ffc.aws-int.defra.cloud/"
+
+#Given I expect that the title is "FFC Demo Service"
