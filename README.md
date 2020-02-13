@@ -6,43 +6,25 @@ The framework is Cucumber (https://cucumber.io/) and webdriver.io based, contain
 
 ## Requirements
 
+- Docker Desktop 2.2.0.3 (42716) or higher
 - Node version 8 or higher
-- A preconfigured Selenium Grid, preinstalled browser driver or cloud provider account
 
 Although this project works fine with NPM we recommend to use Yarn (>= 1.0.0) instead,  due to its speed & solid dependency locking mechanism. To keep things simple we use yarn in this guide, but feel free to replace this with NPM if that is what you are using.
 
-Also this project doesn't cover setting up a proper test environment. You need to download specific browser driver yourself and run the prior starting tests or use a cloud provider like [SauceLabs](https://saucelabs.com/).
 
 ## Quick start
 
 Choose one of the following options:
 
-1. Download the latest stable release [here](https://github.com/webdriverio/cucumber-boilerplate/archive/master.zip) or clone the git repo — `git clone https://github.com/webdriverio/cucumber-boilerplate.git`
+1. Clone the git repo — `git clone https://github.com/DEFRA/ffc-demo-acceptance-tests.git`
 
-2. Then:
-- Copy the files to your project into a directory like `/integrationtests` (note the hidden files!)
+2. From the directory containing the dockerfile run `docker-compose build`
 
-3. Clean the project (Optional):
-- *On OSX/Linux:*
--- Run `yarn run clean`
+3. In the same directory run ` docker-compose up`
 
-- *On Windows:*
--- Remove the directories `/.git`, `/.github`, `/demo-app` & `/test`
--- Remove the files `.travis.yml`, `jest.json` & `wdio.BUILD.conf.js`
--- Remove all the demo features from the `/src/features` directory
+4. This will run an acceptance test against the FFC-Demo service - you will likely need to change the root URL here.
 
-4. Install the dependencies (`yarn install`)
-
-Now you are ready to write your own features.
-
-## Features
-
-- Super simple setup
-- Full integration with [WebdriverIO](http://webdriver.io/)
-- Over 150 predefined steps that cover almost everything you need, you can start writing tests right away
-- Easy integration with cloud services like [Sauce Labs](https://saucelabs.com/)
-- Integration of WebdriverIO's Multiremote functionality
-- Easy to run tests in parallel
+5. Now you are ready to write your own features.
 
 # How to write a test
 
@@ -75,17 +57,7 @@ query after doing a search. As you can see, it is pretty simple and understandab
 
 # How to run the test
 
-Start the local web server:
-
-```sh
-$ yarn run local-webserver
-```
-
-To run your tests just call the [WDIO runner](http://webdriver.io/guide/testrunner/gettingstarted.html):
-
-```sh
-$ yarn run wdio
-```
+Docker compose runs the local webserver to allow Selenium to do it's stuff so after any scenario or code changes in the framework you need on run the `docker-compose build` and `docker-compose up` commands to run a test.
 
 _please note_ The WDIO runner uses the configuration file `wdio.conf.js` by default.
 
