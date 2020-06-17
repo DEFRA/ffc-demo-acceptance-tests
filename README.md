@@ -20,7 +20,7 @@ Choose one of the following options:
 
 2. From the directory containing the dockerfile run `docker-compose build`
 
-3. In the same directory run ` docker-compose up`
+3. In the same directory run `docker-compose up`
 
 4. This will run an acceptance test against the FFC-Demo service - you will likely need to change the root URL here.
 
