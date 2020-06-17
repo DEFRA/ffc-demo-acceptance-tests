@@ -9,6 +9,7 @@ exports.config = {
     runner: 'local',
     //
     // Override default path ('/wd/hub') for chromedriver service.
+    hostname: 'selenium',
     path: '/',
     //
     // ==================
@@ -55,7 +56,10 @@ exports.config = {
         maxInstances: 5,
         //
         browserName: 'chrome',
-        // If outputDir is provided WebdriverIO can capture driver session logs
+        // 'goog:chromeOptions': {
+        //   args: ['--headless', '--disable-gpu', '--ignore-certificate-errors']
+        // }
+        // // If outputDir is provided WebdriverIO can capture driver session logs
         // it is possible to configure which logTypes to include/exclude.
         // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
         // excludeDriverLogs: ['bugreport', 'server'],
@@ -107,8 +111,9 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['chromedriver'],
-    
+    // services: ['chromedriver'],
+    services: ['selenium-standalone'],
+
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
     // see also: https://webdriver.io/docs/frameworks.html
@@ -129,7 +134,7 @@ exports.config = {
     cucumberOpts: {
         require: ['./src/steps/**/*.js'],        // <string[]> (file/dir) require files before executing features
         backtrace: false,   // <boolean> show full backtrace for errors
-        requireModule: [],  // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
+        requireModule: ['@babel/register'],  // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
         dryRun: false,      // <boolean> invoke formatters without executing steps
         failFast: false,    // <boolean> abort the run on first failure
         format: ['pretty'], // <string[]> (type[:path]) specify the output format, optionally supply PATH to redirect formatter output (repeatable)
@@ -142,7 +147,7 @@ exports.config = {
         timeout: 60000,     // <number> timeout for step definitions
         ignoreUndefinedDefinitions: false, // <boolean> Enable this config to treat undefined definitions as warnings.
     },
-    
+
     //
     // =====
     // Hooks
@@ -212,7 +217,7 @@ exports.config = {
      */
     // afterFeature: function (uri, feature, scenarios) {
     // },
-    
+
     /**
      * Runs after a WebdriverIO command gets executed
      * @param {String} commandName hook command name
