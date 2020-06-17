@@ -14,8 +14,8 @@ services:
       - ./wdio.BUILD.conf.js:/usr/src/app/wdio.BUILD.conf.js
 
   selenium:
-    #image: selenium/standalone-chrome-debug
-    image: selenium/standalone-firefox-debug
+    image: selenium/standalone-chrome-debug
+    # image: selenium/standalone-firefox-debug
     expose:
       - "4444"
     privileged: true
