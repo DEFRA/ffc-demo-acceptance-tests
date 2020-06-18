@@ -29,6 +29,7 @@ import isVisible from '../support/check/isDisplayed'
 import waitFor from '../support/action/waitFor'
 import waitForVisible from '../support/action/waitForDisplayed'
 import checkIfElementExists from '../support/lib/checkIfElementExists'
+import checkURLContains from '../support/check/checkURLContains'
 
 const { Then } = require('cucumber')
 
@@ -95,6 +96,11 @@ Then(
 Then(
   /^I expect that the url is( not)* "([^"]*)?"$/,
   checkURL
+)
+
+Then(
+  /^I expect that the url( not)* contains "([^"]*)?"$/,
+  checkURLContains
 )
 
 Then(
