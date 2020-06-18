@@ -1,6 +1,8 @@
 version: "3"
 services:
   wdio-cucumber:
+    environment: 
+      TEST_ENVIRONMENT_ROOT_URL: "https://ffc-demo.ffc-dev.aws-int.defra.cloud"
     build: .
     image: wdio-cucumber
     container_name: wdio-cucumber
@@ -12,6 +14,7 @@ services:
       - ./babel.config.js:/usr/src/app/babel.config.js
       - ./wdio.conf.js:/usr/src/app/wdio.conf.js
       - ./wdio.BUILD.conf.js:/usr/src/app/wdio.BUILD.conf.js
+      - ./reports/html-reports/:/usr/src/app/reports/html-reports/
 
   selenium:
     image: selenium/standalone-chrome-debug

@@ -1,6 +1,8 @@
 const { HtmlReporter } = require('@rpii/wdio-html-reporter')
 const log4js = require('@log4js-node/log4js-api');
 const logger = log4js.getLogger('default');
+const envRoot = (process.env.TEST_ENVIRONMENT_ROOT_URL || 'https://ffc-demo.ffc-dev.aws-int.defra.cloud');
+
 exports.config = {
     // runner: 'local',
     hostname: 'selenium',
@@ -9,7 +11,7 @@ exports.config = {
         './src/features/**/*.feature'
     ],
     exclude: [
-        // 'path/to/excluded/files'
+        './src/scratch/**'
     ],
     maxInstances: 10,
     capabilities: [{
@@ -33,7 +35,8 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: 'selenium:4444',
+    // baseUrl: 'https://ffc-demo.ffc-dev.aws-int.defra.cloud/selenium:4444',
+    baseUrl: envRoot + "/selenium:4444",
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
@@ -71,10 +74,10 @@ exports.config = {
             debug: true,
             outputDir: './reports/html-reports/',
             filename: 'report.html',
-            reportTitle: 'Test Report Title',
+            reportTitle: 'Acceptance Test Report',
 
             //to show the report in a browser when done
-            showInBrowser: true,
+            showInBrowser: false,
 
             //to turn on screenshots after every test
             useOnAfterCommandForScreenshot: false,
