@@ -19,4 +19,4 @@ RUN npm install
 # Bundle app source setting node user as owner
 COPY --chown=node:node . .
 
-CMD yarn run wdio
+CMD npx wdio wdio.conf.js

@@ -2,9 +2,9 @@ Feature: FFC Demo App Start Page
 
 Scenario: Enter a date for the start of subsidence
 
-Given I open the url "https://expired.badssl.com/"
-Then I expect that the url is "https://expired.badssl.com/"
-Then I expect that the title contains "expired.badssl.com"
+Given I open the url "https://ffc-demo.ffc-dev.aws-int.defra.cloud/claim/date-of-subsidence"
+Then I expect that the url is "https://ffc-demo.ffc-dev.aws-int.defra.cloud/claim/date-of-subsidence"
+Then I expect that the title contains "FFC Demo Service - GOV.UK"
 Given I clear the inputfield "#date-of-subsidence-day"
 And I add "01" to the inputfield "#date-of-subsidence-day"
 And I clear the inputfield "#date-of-subsidence-month"
