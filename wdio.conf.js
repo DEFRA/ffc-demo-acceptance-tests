@@ -13,7 +13,7 @@ exports.config = {
         maxInstances: 5,
         browserName: 'chrome',
         'goog:chromeOptions': {
-          args: ['--headless', '--disable-gpu', '--ignore-certificate-errors']
+            args: ['--headless', '--disable-gpu', '--ignore-certificate-errors']
         }
     }],
     //
@@ -64,7 +64,7 @@ exports.config = {
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter.html
     reporters: ['spec'],
- //
+    //
     // If you are using Cucumber you need to specify the location of your step definitions.
     cucumberOpts: {
         require: ['./src/steps/**/*.js'],        // <string[]> (file/dir) require files before executing features
@@ -90,11 +90,11 @@ exports.config = {
     // onPrepare: function (config, capabilities) {
     // },
     beforeSession: function () {
-      const chai = require('chai')
+        const chai = require('chai')
 
-      global.expect = chai.expect
-      global.assert = chai.assert
-      global.should = chai.should()
+        global.expect = chai.expect
+        global.assert = chai.assert
+        global.should = chai.should()
     },
     /**
      * Gets executed before test execution begins. At this point you can access to all global
