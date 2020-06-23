@@ -1,4 +1,4 @@
-const { HtmlReporter } = require('@rpii/wdio-html-reporter')
+const { ReportAggregator, HtmlReporter } = require('@rpii/wdio-html-reporter')
 const log4js = require('@log4js-node/log4js-api');
 const logger = log4js.getLogger('default');
 const envRoot = (process.env.TEST_ENVIRONMENT_ROOT_URL || 'https://ffc-demo.ffc-dev.aws-int.defra.cloud');
@@ -17,7 +17,7 @@ exports.config = {
         maxInstances: 5,
         browserName: 'chrome',
         'goog:chromeOptions': {
-            args: ['--headless', '--ignore-certificate-errors']
+            args: ['--ignore-certificate-errors']
         }
     }],
     //
@@ -38,9 +38,9 @@ exports.config = {
             debug: true,
             outputDir: './reports/html-reports/',
             filename: 'report.html',
-            reportTitle: 'Acceptance Test Report',
+            reportTitle: 'Feature Test Report',
             showInBrowser: false,
-            useOnAfterCommandForScreenshot: false,
+            useOnAfterCommandForScreenshot: true,
             LOG: logger
         }]
     ],
@@ -66,11 +66,46 @@ exports.config = {
     // =====
     // Hooks
     // =====
+    onPrepare: function (config, capabilities) {
+
+        let reportAggregator = new ReportAggregator({
+            outputDir: './reports/html-reports/',
+            filename: 'acceptance-test-suite-report.html',
+            reportTitle: 'Acceptance Tests Report',
+            browserName: capabilities.browserName,
+            // to use the template override option, can point to your own file in the test project:
+            // templateFilename: path.resolve(__dirname, '../template/wdio-html-reporter-alt-template.hbs')
+        });
+        reportAggregator.clean();
+
+        global.reportAggregator = reportAggregator;
+    },
+
+    onComplete: function (exitCode, config, capabilities, results) {
+        (async () => {
+            await global.reportAggregator.createReport();
+        })();
+    },
+
     beforeSession: function () {
         const chai = require('chai')
 
         global.expect = chai.expect
         global.assert = chai.assert
         global.should = chai.should()
+    },
+
+    afterTest: function (test) {
+        const path = require('path');
+        const moment = require('moment');
+
+        // if test passed, ignore, else take and save screenshot.
+        if (test.passed) {
+            return;
+        }
+        const timestamp = moment().format('YYYYMMDD-HHmmss.SSS');
+        const filepath = path.join('reports/html-reports/screenshots/', timestamp + '.png');
+        browser.saveScreenshot(filepath);
+        process.emit('test:screenshot', filepath);
     },
 }
