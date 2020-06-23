@@ -6,18 +6,13 @@ const envRoot = (process.env.TEST_ENVIRONMENT_ROOT_URL || 'https://ffc-demo.ffc-
 exports.config = {
     hostname: 'selenium',
     path: '/wd/hub',
-    specs: [
-        './src/features/**/*.feature'
-    ],
-    exclude: [
-        './src/scratch/**'
-    ],
+    specs: ['./src/features/**/*.feature'],
+    exclude: ['./src/scratch/**'],
     maxInstances: 10,
     capabilities: [{
         maxInstances: 5,
-        browserName: 'chrome',
-        'goog:chromeOptions': {
-            args: ['--ignore-certificate-errors']
+        browserName: 'chrome', 'goog:chromeOptions': {
+            args: ['--headless', '--ignore-certificate-errors']
         }
     }],
     //
@@ -37,10 +32,10 @@ exports.config = {
         [HtmlReporter, {
             debug: true,
             outputDir: './reports/html-reports/',
-            filename: 'report.html',
+            filename: 'feature-report.html',
             reportTitle: 'Feature Test Report',
             showInBrowser: false,
-            useOnAfterCommandForScreenshot: true,
+            useOnAfterCommandForScreenshot: false,
             LOG: logger
         }]
     ],

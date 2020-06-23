@@ -1,4 +1,4 @@
-Feature: FFC Demo App Start Page
+Feature: Date of Subsidence Page checks
 
     Scenario: Enter a date for the start of subsidence
 
