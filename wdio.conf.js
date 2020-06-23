@@ -4,7 +4,6 @@ const logger = log4js.getLogger('default');
 const envRoot = (process.env.TEST_ENVIRONMENT_ROOT_URL || 'https://ffc-demo.ffc-dev.aws-int.defra.cloud');
 
 exports.config = {
-    // runner: 'local',
     hostname: 'selenium',
     path: '/wd/hub',
     specs: [
@@ -26,78 +25,26 @@ exports.config = {
     // Test Configurations
     // ===================
     // Define all options that are relevant for the WebdriverIO instance here
-    //
-    // Level of logging verbosity: trace | debug | info | warn | error | silent
     logLevel: 'info',
     bail: 0,
-    //
-    // Set a base URL in order to shorten url command calls. If your `url` parameter starts
-    // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
-    // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
-    // gets prepended directly.
-    // baseUrl: 'https://ffc-demo.ffc-dev.aws-int.defra.cloud/selenium:4444',
     baseUrl: envRoot + "/selenium:4444",
-    //
-    // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
-    //
-    // Default timeout in milliseconds for request
-    // if Selenium Grid doesn't send response
     connectionRetryTimeout: 90000,
-    //
-    // Default request retries count
     connectionRetryCount: 3,
-    //
-    // Test runner services
-    // Services take over a specific job you don't want to take care of. They enhance
-    // your test setup with almost no effort. Unlike plugins, they don't add new
-    // commands. Instead, they hook themselves up into the test process.
-    // services: ['chromedriver'],
     services: ['selenium-standalone'],
-
-    // Framework you want to run your specs with.
-    // The following are supported: Mocha, Jasmine, and Cucumber
-    // see also: https://webdriver.io/docs/frameworks.html
-    //
-    // Make sure you have the wdio adapter package for the specific framework installed
-    // before running any tests.
     framework: 'cucumber',
-    //
-    // The number of times to retry the entire specfile when it fails as a whole
-    // specFileRetries: 1,
-    //
-    // Test reporter for stdout.
-    // The only one supported by default is 'dot'
-    // see also: https://webdriver.io/docs/dot-reporter.html
     reporters: ['spec',
         [HtmlReporter, {
             debug: true,
             outputDir: './reports/html-reports/',
             filename: 'report.html',
             reportTitle: 'Acceptance Test Report',
-
-            //to show the report in a browser when done
             showInBrowser: false,
-
-            //to turn on screenshots after every test
             useOnAfterCommandForScreenshot: false,
-
-            // to use the template override option, can point to your own file in the test project:
-            // templateFilename: path.resolve(__dirname, '../template/wdio-html-reporter-alt-template.hbs'),
-
-            // to add custom template functions for your custom template:
-            // templateFuncs: {
-            //     addOne: (v) => {
-            //         return v+1;
-            //     },
-            // },
-
-            //to initialize the logger
             LOG: logger
         }]
     ],
 
-    //
     // If you are using Cucumber you need to specify the location of your step definitions.
     cucumberOpts: {
         require: ['./src/steps/**/*.js'],        // <string[]> (file/dir) require files before executing features
@@ -116,12 +63,9 @@ exports.config = {
         ignoreUndefinedDefinitions: false, // <boolean> Enable this config to treat undefined definitions as warnings.
     },
 
-    //
     // =====
     // Hooks
     // =====
-    // onPrepare: function (config, capabilities) {
-    // },
     beforeSession: function () {
         const chai = require('chai')
 
@@ -129,93 +73,4 @@ exports.config = {
         global.assert = chai.assert
         global.should = chai.should()
     },
-    /**
-     * Gets executed before test execution begins. At this point you can access to all global
-     * variables like `browser`. It is the perfect place to define custom commands.
-     * @param {Array.<Object>} capabilities list of capabilities details
-     * @param {Array.<String>} specs List of spec file paths that are to be run
-     */
-    // before: function (capabilities, specs) {
-    // },
-    /**
-     * Runs before a WebdriverIO command gets executed.
-     * @param {String} commandName hook command name
-     * @param {Array} args arguments that command would receive
-     */
-    // beforeCommand: function (commandName, args) {
-    // },
-    /**
-     * Runs before a Cucumber feature
-     */
-    // beforeFeature: function (uri, feature, scenarios) {
-    // },
-    /**
-     * Runs before a Cucumber scenario
-     */
-    // beforeScenario: function (uri, feature, scenario, sourceLocation) {
-    // },
-    /**
-     * Runs before a Cucumber step
-     */
-    // beforeStep: function (uri, feature, stepData, context) {
-    // },
-    /**
-     * Runs after a Cucumber step
-     */
-    // afterStep: function (uri, feature, { error, result, duration, passed }, stepData, context) {
-    // },
-    /**
-     * Runs after a Cucumber scenario
-     */
-    // afterScenario: function (uri, feature, scenario, result, sourceLocation) {
-    // },
-    /**
-     * Runs after a Cucumber feature
-     */
-    // afterFeature: function (uri, feature, scenarios) {
-    // },
-
-    /**
-     * Runs after a WebdriverIO command gets executed
-     * @param {String} commandName hook command name
-     * @param {Array} args arguments that command would receive
-     * @param {Number} result 0 - command success, 1 - command error
-     * @param {Object} error error object if any
-     */
-    // afterCommand: function (commandName, args, result, error) {
-    // },
-    /**
-     * Gets executed after all tests are done. You still have access to all global variables from
-     * the test.
-     * @param {Number} result 0 - test pass, 1 - test fail
-     * @param {Array.<Object>} capabilities list of capabilities details
-     * @param {Array.<String>} specs List of spec file paths that ran
-     */
-    // after: function (result, capabilities, specs) {
-    // },
-    /**
-     * Gets executed right after terminating the webdriver session.
-     * @param {Object} config wdio configuration object
-     * @param {Array.<Object>} capabilities list of capabilities details
-     * @param {Array.<String>} specs List of spec file paths that ran
-     */
-    // afterSession: function (config, capabilities, specs) {
-    // },
-    /**
-     * Gets executed after all workers got shut down and the process is about to exit. An error
-     * thrown in the onComplete hook will result in the test run failing.
-     * @param {Object} exitCode 0 - success, 1 - fail
-     * @param {Object} config wdio configuration object
-     * @param {Array.<Object>} capabilities list of capabilities details
-     * @param {<Object>} results object containing test results
-     */
-    // onComplete: function(exitCode, config, capabilities, results) {
-    // },
-    /**
-    * Gets executed when a refresh happens.
-    * @param {String} oldSessionId session ID of the old session
-    * @param {String} newSessionId session ID of the new session
-    */
-    //onReload: function(oldSessionId, newSessionId) {
-    //}
 }
