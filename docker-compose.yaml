@@ -1,29 +1,15 @@
-version: "3"
+version: "3.7"
 services:
   wdio-cucumber:
-    environment: 
-      TEST_ENVIRONMENT_ROOT_URL: "https://ffc-demo.ffc-dev.aws-int.defra.cloud"
     build: .
     image: wdio-cucumber
     container_name: wdio-cucumber
-    links:
+    depends_on:
       - selenium
-    volumes:
-      - ./src/:/usr/src/app/src
-      - ./test/:/usr/src/app/test
-      - ./babel.config.js:/usr/src/app/babel.config.js
-      - ./wdio.conf.js:/usr/src/app/wdio.conf.js
-      - ./wdio.BUILD.conf.js:/usr/src/app/wdio.BUILD.conf.js
-      - ./reports/html-reports/:/usr/src/app/reports/html-reports/
 
   selenium:
     image: selenium/standalone-chrome-debug
-    # image: selenium/standalone-firefox-debug
-    expose:
-      - "4444"
     privileged: true
 
   hub:
     image: selenium/hub
-    ports:
-      - "4444:4444"
