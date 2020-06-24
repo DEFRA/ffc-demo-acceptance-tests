@@ -1,16 +1,16 @@
 # ffc-demo-acceptance-tests
-Future Farming and Countryside programme acceptance tests 
+Future Farming and Countryside Programme - Demo Acceptance Tests 
 ***
 
-The framework is Cucumber (https://cucumber.io/) and webdriver.io based, containerised, expandable and based on the actively maintained webdriver.io Cucumber boilerplate project. It is recommended to keep in sync with the master branch of this project to benefit from the work done by the maintainers.
+This project contains the acceptance tests for the FFC Demo service components as can be operated through the 'customer facing' `ffc-demo-web` front end microservice.
+
+The framework is (Cucumber)[https://cucumber.io/] and (webdriver.io)[https://webdriver.io/] based, containerised, expandable and based on the actively maintained webdriver.io Cucumber boilerplate project. It is recommended to keep in sync with the master branch of this project to benefit from the work done by the maintainers.
 
 ## Requirements
 
 - Docker Desktop 2.2.0.3 (42716) or higher
-- Node version 8 or higher
-
-Although this project works fine with NPM we recommend to use Yarn (>= 1.0.0) instead,  due to its speed & solid dependency locking mechanism. To keep things simple we use yarn in this guide, but feel free to replace this with NPM if that is what you are using.
-
+- Node version 12 (not compatible with v13)
+  - if you have multiple versions of node, run `nvm use 12` to use version 12 for this alone
 
 ## Quick start
 
@@ -18,13 +18,13 @@ Choose one of the following options:
 
 1. Clone the git repo — `git clone https://github.com/DEFRA/ffc-demo-acceptance-tests.git`
 
-2. From the directory containing the dockerfile run `docker-compose build`
+2. Set the root URL for the environment in the environment variable `TEST_ENVIRONMENT_ROOT_URL`
 
-3. In the same directory run ` docker-compose up`
+3. From the directory containing the dockerfile run `docker-compose up --build`. This will run an acceptance test against the FFC-Demo web service.
 
-4. This will run an acceptance test against the FFC-Demo service - you will likely need to change the root URL here.
+4. The test report will be output to `./reports/html-reports`. Read more about report configuration in the [rpii/wdio-hmtl-reporter docs](https://github.com/rpii/wdio-html-reporter)
 
-5. Now you are ready to write your own features.
+5. Now you are ready to maintain, extend or write your own features in the `./src/features` directory
 
 # How to write a test
 
@@ -91,7 +91,7 @@ Your environment-specific config file will get merged into the default config fi
 To run a test in a specific environment just add the desired configuration file as the first parameter:
 
 ```sh
-$ yarn run wdio wdio.STAGING.conf.js
+$ npx run wdio wdio.STAGING.conf.js
 ```
 
 # Running single feature
@@ -204,6 +204,7 @@ Check out all predefined snippets. You can see how they get used in [`sampleSnip
 - `I expect that (button|element) "([^"]*)?"( not)* contains the text "([^"]*)?"` <br>Check if an element or input field contains the given text
 - `I expect that (button|element) "([^"]*)?"( not)* contains any text` <br>Check if an element or input field contains any text
 - `I expect that (button|elementelement) "([^"]*)?" is( not)* empty` <br>Check if an element or input field is empty
+- `I expect that the url ( not)* contains "([^"]*)?"` <br>Check if the the URL of the current browser window/tab contains a certain string
 - `I expect that the url is( not)* "([^"]*)?"` <br>Check if the the URL of the current browser window/tab is a certain string
 - `I expect that the path is( not)* "([^"]*)?"` <br>Check if the path of the URL of the current browser window/tab is a certain string
 - `I expect the url to( not)* contain "([^"]*)?"` <br>Check if the URL of the current browser window/tab contains a certain string
