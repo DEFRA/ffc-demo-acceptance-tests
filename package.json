@@ -6,7 +6,10 @@
   "description": "Boilerplate project to run WebdriverIO tests with Cucumber",
   "homepage": "https://github.com/webdriverio/cucumber-boilerplate",
   "contributors": [
-    "W. van Kuipers <github@pwnd.nl>"
+    "W. van Kuipers <github@pwnd.nl>",
+    "John Watson <john.watson2@rpa.gov.uk>",
+    "Steve Hunt <steven.hunt@defra.gov.uk>",
+    "Seymour Pattisson <seymour.pattisson@defra.gov.uk>"
   ],
   "repository": {
     "type": "git",
@@ -26,7 +29,7 @@
   ],
   "scripts": {
     "test": "run-s test:*",
-    "test:lint": "eslint 'src/**/*.js' 'test/**/*.js!(setup.js)'",
+    "test:lint": "standard",
     "test:unit": "jest --config=jest.json --detectOpenHandles",
     "test:features": "wdio wdio.BUILD.conf.js"
   },
@@ -43,7 +46,6 @@
     "@wdio/static-server-service": "^5.14.4",
     "axe-webdriverio": "^0.2.0",
     "chai": "^4.1.2",
-    "eslint-plugin-wdio": "^5.7.8",
     "selenium-server": "^3.141.59",
     "selenium-standalone": "^6.17.0",
     "wdio-geckodriver-service": "^1.0.0",
@@ -51,6 +53,7 @@
     "ws": "^7.2.0"
   },
   "devDependencies": {
+    "standard": "12.0.1",
     "@babel/core": "^7.4.0",
     "@rpii/wdio-html-reporter": "^6.0.6",
     "@wdio/cucumber-framework": "^5.23.0",
@@ -59,14 +62,23 @@
     "@wdio/sync": "^5.23.0",
     "babel-jest": "^24.8.0",
     "chromedriver": "^78.0.1",
-    "eslint": "^6.0.0",
-    "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-plugin-import": "^2.18.0",
     "geckodriver": "^1.18.0",
     "http-server": "^0.11.0",
     "jest": "^24.8.0",
     "npm-run-all": "^4.1.5",
     "pngjs": "^5.0.0",
     "wdio-chromedriver-service": "^5.0.2"
+  },
+  "standard": {
+    "globals": [
+      "browser",
+      "it",
+      "expect",
+      "describe",
+      "jest",
+      "beforeEach",
+      "assert",
+      "$"
+    ]
   }
 }

@@ -7,32 +7,32 @@
  * @param  {String}   axis              The axis to check on (x or y)
  */
 export default (selector, falseCase, expectedPosition, axis) => {
-    /**
+  /**
      * Get the location of the element on the given axis
      * @type {[type]}
      */
-    const location = $(selector).getLocation(axis);
+  const location = $(selector).getLocation(axis)
 
-    /**
+  /**
      * Parsed expected position
      * @type {Int}
      */
-    const intExpectedPosition = parseFloat(expectedPosition);
+  const intExpectedPosition = parseFloat(expectedPosition)
 
-    if (falseCase) {
-        expect(location).to.not
-            .equal(
-                intExpectedPosition,
-                `Element "${selector}" should not be positioned at `
-                + `${intExpectedPosition}px on the ${axis} axis`
-            );
-    } else {
-        expect(location).to
-            .equal(
-                intExpectedPosition,
-                `Element "${selector}" should be positioned at `
-                + `${intExpectedPosition}px on the ${axis} axis, but was found `
-                + `at ${location}px`
-            );
-    }
-};
+  if (falseCase) {
+    expect(location).to.not
+      .equal(
+        intExpectedPosition,
+        `Element "${selector}" should not be positioned at ` +
+                `${intExpectedPosition}px on the ${axis} axis`
+      )
+  } else {
+    expect(location).to
+      .equal(
+        intExpectedPosition,
+        `Element "${selector}" should be positioned at ` +
+                `${intExpectedPosition}px on the ${axis} axis, but was found ` +
+                `at ${location}px`
+      )
+  }
+}

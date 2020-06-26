@@ -1,7 +1,6 @@
 import Page from './page'
-import utl from '../../utilities/common-utilities'
 
-class mineType extends Page {
+class MineType extends Page {
   /**
     * define elements
     */
@@ -27,4 +26,4 @@ class mineType extends Page {
      */
 }
 
-export default new mineType()
+export default new MineType()

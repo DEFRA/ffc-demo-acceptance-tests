@@ -5,21 +5,21 @@
  * @param  {String}   expectedUrl The expected URL to check against
  */
 export default (falseCase, expectedUrl) => {
-    /**
+  /**
      * The current browser window's URL
      * @type {String}
      */
-    const currentUrl = browser.getUrl();
+  const currentUrl = browser.getUrl()
 
-    if (falseCase) {
-        expect(currentUrl).to.not
-            .equal(expectedUrl, `expected url not to be "${currentUrl}"`);
-    } else {
-        expect(currentUrl).to
-            .equal(
-                expectedUrl,
-                `expected url to be "${expectedUrl}" but found `
-                + `"${currentUrl}"`
-            );
-    }
-};
+  if (falseCase) {
+    expect(currentUrl).to.not
+      .equal(expectedUrl, `expected url not to be "${currentUrl}"`)
+  } else {
+    expect(currentUrl).to
+      .equal(
+        expectedUrl,
+        `expected url to be "${expectedUrl}" but found ` +
+                `"${currentUrl}"`
+      )
+  }
+}

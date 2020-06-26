@@ -1,7 +1,6 @@
 import Page from './page'
-import utl from '../../utilities/common-utilities'
 
-class propertyType extends Page {
+class PropertyType extends Page {
   /**
   * define elements
   */
@@ -31,4 +30,4 @@ class propertyType extends Page {
   }
 }
 
-export default new propertyType()
+export default new PropertyType()

@@ -1,7 +1,6 @@
 import Page from './page'
-import utl from '../../utilities/common-utilities'
 
-class propertyAccessible extends Page {
+class PropertyAccessible extends Page {
   /**
   * define elements
   */
@@ -25,4 +24,4 @@ class propertyAccessible extends Page {
      */
 }
 
-export default new propertyAccessible()
+export default new PropertyAccessible()

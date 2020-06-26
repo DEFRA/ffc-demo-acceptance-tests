@@ -1,7 +1,6 @@
 import Page from './page'
-import utl from '../../utilities/common-utilities'
 
-class confirmation extends Page {
+class Confirmation extends Page {
   /**
     * define elements
     */
@@ -20,10 +19,10 @@ class confirmation extends Page {
   /**
      * your page specific methods
      */
-  applicationComplete () {
+  checkApplicationComplete () {
     this.applicationComplete.waitForDisplayed(1000)
     return this.applicationComplete.isDisplayed()
   }
 }
 
-export default new confirmation()
+export default new Confirmation()

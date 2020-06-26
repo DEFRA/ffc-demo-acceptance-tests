@@ -3,7 +3,6 @@
 
 # Pull request checklist
 - [ ] Contributed code respects the [editorconfig rules](.editorconfig)
-- [ ] Contributed code passes the [eslint rules](.eslintrc.yaml)
 - [ ] Contributed code passes the unit tests
 - [ ] Added steps are described in the [readme file](README.md)
 - [ ] The build of the PR is passing in the Jenkins pipeline(s)
