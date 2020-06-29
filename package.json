@@ -1,10 +1,10 @@
 {
-  "author": "Christian Bromann <christian@saucelabs.com>",
-  "license": "MIT",
-  "name": "cucumber-boilerplate",
-  "version": "1.3.2",
-  "description": "Boilerplate project to run WebdriverIO tests with Cucumber",
-  "homepage": "https://github.com/webdriverio/cucumber-boilerplate",
+  "author": "Seymour Pattisson <seymour.pattisson@defra.gov.uk>",
+  "license": "OGL-UK-3.0",
+  "name": "ffc-demo-acceptance-tests",
+  "version": "1.0.0",
+  "description": "Acceptance tests for FFC demo service",
+  "homepage": "https://github.com/DEFRA/ffc-demo-acceptance-tests",
   "contributors": [
     "W. van Kuipers <github@pwnd.nl>",
     "John Watson <john.watson2@rpa.gov.uk>",
@@ -13,10 +13,10 @@
   ],
   "repository": {
     "type": "git",
-    "getUrl": "https://github.com/webdriverio/cucumber-boilerplate.git"
+    "getUrl": "https://github.com/DEFRA/ffc-demo-acceptance-tests.git"
   },
   "bugs": {
-    "getUrl": "https://github.com/webdriverio/cucumber-boilerplate/issues"
+    "getUrl": "https://github.com/DEFRA/ffc-demo-acceptance-tests/issues"
   },
   "keywords": [
     "wdio",
@@ -24,7 +24,6 @@
     "webdriverio",
     "cucumber",
     "test",
-    "boilerplate",
     "selenium"
   ],
   "scripts": {
