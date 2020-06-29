@@ -5,17 +5,17 @@
  *                              not
  */
 export default (selector, falseCase) => {
-    /**
+  /**
      * The selected state
      * @type {Boolean}
      */
-    const isSelected = $(selector).isSelected();
+  const isSelected = $(selector).isSelected()
 
-    if (falseCase) {
-        expect(isSelected).to.not
-            .equal(true, `"${selector}" should not be selected`);
-    } else {
-        expect(isSelected).to
-            .equal(true, `"${selector}" should be selected`);
-    }
-};
+  if (falseCase) {
+    expect(isSelected).to.not
+      .equal(true, `"${selector}" should not be selected`)
+  } else {
+    expect(isSelected).to
+      .equal(true, `"${selector}" should be selected`)
+  }
+}

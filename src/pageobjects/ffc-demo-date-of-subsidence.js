@@ -1,7 +1,6 @@
 import Page from './page'
-import utl from '../../utilities/common-utilities'
 
-class dateOfSubsidence extends Page {
+class DateOfSubsidence extends Page {
   /**
     * define elements
     */
@@ -44,4 +43,4 @@ class dateOfSubsidence extends Page {
   }
 }
 
-export default new dateOfSubsidence()
+export default new DateOfSubsidence()

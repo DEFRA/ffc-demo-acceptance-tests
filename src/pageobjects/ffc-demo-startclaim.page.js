@@ -1,14 +1,13 @@
 import Page from './page'
-import utl from '../../utilities/common-utilities'
 
-class startPage extends Page {
+class StartPage extends Page {
   /**
   * define elements
   */
   get usernameInput () { return $('//*[@name="username"]') }
   get passwordInput () { return $('//*[@name="password"]') }
   get loginButton () { return $('//button[contains(., "Login")]') }
-  get headerImage () { return $('//img[@alt=\"Login\"]') }
+  get headerImage () { return $('//img[@alt="Login"]') }
   get cookiesGotIt () { return $('//button[contains(., "Got it!")]') }
   get usertrackConsent () { return $('//button[contains(., "Acc")]') }
   // get startNewClaim()    { return $('//button[contains(., "Start new claim")]');}
@@ -46,4 +45,4 @@ class startPage extends Page {
   }
 }
 
-export default new startPage()
+export default new StartPage()

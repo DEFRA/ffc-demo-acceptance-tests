@@ -4,4 +4,4 @@
  */
 export default (selector) => {
   $(selector).clearValue()
-};
+}

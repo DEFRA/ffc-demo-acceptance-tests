@@ -1,16 +1,15 @@
 import Page from './page'
-import utl from '../../utilities/common-utilities'
 
-class email extends Page {
+class Email extends Page {
   /**
   * define elements
   */
   get serviceName () { return $('//.govuk-header__link--service-name') }
   get headingQuestion () { return $('//.govuk-fieldset__heading') }
   get questionHint () { return $('//.govuk-label') }
-  get emailField () { return $('#email')}
-  get submitButton () { return $('.govuk-button')}
-  get unavailableService () { return $('.govuk-heading-xl')}
+  get emailField () { return $('#email') }
+  get submitButton () { return $('.govuk-button') }
+  get unavailableService () { return $('.govuk-heading-xl') }
 
   /**
      * define or overwrite page methods
@@ -30,4 +29,4 @@ class email extends Page {
   }
 }
 
-export default new email()
+export default new Email()

@@ -5,24 +5,24 @@
  * @param  {Type}     expectedTitle The expected title
  */
 export default (falseCase, expectedTitle) => {
-    /**
+  /**
      * The actual title of the current browser window
      * @type {String}
      */
-    const title = browser.getTitle();
+  const title = browser.getTitle()
 
-    if (falseCase) {
-        expect(title).to.not
-            .contain(
-                expectedTitle,
-                `Expected title not to contain "${expectedTitle}"`
-            );
-    } else {
-        expect(title).to
-            .contain(
-                expectedTitle,
-                `Expected title to contain "${expectedTitle}" 
+  if (falseCase) {
+    expect(title).to.not
+      .contain(
+        expectedTitle,
+        `Expected title not to contain "${expectedTitle}"`
+      )
+  } else {
+    expect(title).to
+      .contain(
+        expectedTitle,
+        `Expected title to contain "${expectedTitle}" 
                         but found "${title}"`
-            );
-    }
-};
+      )
+  }
+}
