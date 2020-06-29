@@ -1,5 +1,6 @@
-# Use alpine node version
+# Use DEFRA base node version
 FROM defradigital/node:1.0.2-node12.16.0
+ENV NODE_ENV=development
 
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
