@@ -1,0 +1,18 @@
+name: ffc-demo-acceptance-tests
+namespace: ffc-demo
+environment: development
+image: ffc-demo-acceptance-tests
+labels: {}
+container:
+  imagePullPolicy: IfNotPresent
+  readOnlyRootFilesystem: true
+  allowPrivilegeEscalation: false
+  requestMemory: 60Mi
+  requestCpu: 40m
+  limitMemory: 120Mi
+  limitCpu: 80m
+  testEnvironmentRootUrl: 
+containerConfigMap:
+  name: ffc-demo-acceptance-tests-config-map
+job: 
+  backoffLimit: 4

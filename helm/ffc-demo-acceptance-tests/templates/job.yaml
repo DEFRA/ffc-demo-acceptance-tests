@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ quote .Values.name }}
+  labels: 
+    {{- include "ffc-helm-library.labels" . | nindent 4 }}
+spec:
+  template:
+    spec:
+      containers:
+      - {{ include "ffc-helm-library.container" (list . "ffc-demo-acceptance-tests.container") }}
+      restartPolicy: Never
+  backoffLimit: {{ .Values.job.backoffLimit }}

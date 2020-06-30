@@ -1,0 +1,2 @@
+{{- define "ffc-demo-acceptance-tests.container" -}}
+{{- end -}}

@@ -1,0 +1,8 @@
+{{- include "ffc-helm-library.container-config-map" (list . "ffc-demo-acceptance-tests.config-map") -}}
+{{- define "ffc-demo-acceptance-tests.config-map" -}}
+data:
+  NODE_ENV: {{ quote .Values.environment }}
+  {{- if .Values.container.testEnvironmentRootUrl }}
+  TEST_ENVIRONMENT_ROOT_URL: {{ quote .Values.container.testEnvironmentRootUrl }}
+  {{- end }}
+{{- end -}}

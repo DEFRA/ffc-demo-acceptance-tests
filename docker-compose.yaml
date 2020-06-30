@@ -2,8 +2,8 @@ version: "3.7"
 services:
   wdio-cucumber:
     build: .
-    image: wdio-cucumber
-    container_name: wdio-cucumber
+    image: ffc-demo-acceptance-tests
+    container_name: ffc-demo-acceptance-tests
     depends_on:
       - selenium
 
